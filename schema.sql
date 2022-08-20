@@ -27,3 +27,12 @@ CREATE TABLE species (
  name CHAR(200),
  PRIMARY KEY(id)
 );
+
+ALTER TABLE animals
+ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
+
+ALTER TABLE animals
+DROP COLUMN species;
+
+ALTER TABLE animals
+ADD COLUMN owners_id INT REFERENCES owners(id);
