@@ -14,6 +14,48 @@ SELECT * FROM animals WHERE neutered = TRUE;SELECT * FROM animals WHERE neutered
 
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
+BEGIN;
+
+UPDATE animals
+SET species = 'unspecified';
+
+SELECT * from animals;
+ROLLBACK;
+
+SELECT * from animals;
+
+BEGIN;
+
+UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon'; 
+
+UPDATE animals SET species = 'pokemon' WHERE species IS NULL; 
+
+SELECT * from animals;
+COMMIT;
+
+SELECT species from animals;
+
+BEGIN;
+
+DELETE FROM animals;
+SELECT * FROM animals;
+
+ROLLBACK;
+SELECT * FROM animals;
+
+BEGIN;
+
+DELETE FROM animals WHERE  date_of_birth >= '2022/01/01' ;
+SAVEPOINT delete_2022_animals;
+
+UPDATE animals SET weight_kg = weight_kg * -1;
+
+ROLLBACK TO delete_2022_animals;
+
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0; 
+
+COMMIT;
+
 SELECT COUNT(id) FROM animals;
 
 SELECT COUNT(id) FROM animals
