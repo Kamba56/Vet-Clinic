@@ -43,3 +43,37 @@ VALUES ('Pokemon');
 
 INSERT INTO species (name)
 VALUES ('Digimon');
+
+UPDATE animals
+SET species_id = 2
+WHERE name LIKE '%mon%';
+
+UPDATE animals
+SET species_id = 1
+WHERE name NOT LIKE '%mon%';
+
+ UPDATE animals
+SET owners_id = 1
+WHERE name = 'Agumon';
+
+UPDATE animals
+SET owners_id = 2
+WHERE name = 'Gabumon' OR name = 'Pikachu';
+
+UPDATE animals
+SET owners_id = 3
+WHERE name = 'Plantmon' OR name = 'Devimon';
+
+UPDATE animals
+SET owners_id = 4
+WHERE name = 'Squirtle' OR name = 'Charmander' OR 'Blossom';
+ERROR:  invalid input syntax for type boolean: "Blossom"
+LINE 3: WHERE name = 'Squirtle' OR name = 'Charmander' OR 'Blossom';
+
+UPDATE animals
+SET owners_id = 4
+WHERE name = 'Squirtle' OR name = 'Charmander' OR name = 'Blossom';
+
+UPDATE animals
+SET owners_id = 5
+WHERE name = 'Boarmon' OR name = 'Angemon';
