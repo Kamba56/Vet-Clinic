@@ -46,11 +46,11 @@ VALUES ('Digimon');
 
 UPDATE animals
 SET species_id = 2
-WHERE name LIKE '%mon%';
+WHERE name LIKE '%mon';
 
 UPDATE animals
 SET species_id = 1
-WHERE name NOT LIKE '%mon%';
+WHERE name NOT LIKE '%mon';
 
  UPDATE animals
 SET owners_id = 1
