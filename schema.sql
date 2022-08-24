@@ -14,3 +14,28 @@ CREATE TABLE animals(
 
 ALTER TABLE animals
 ADD species CHAR(200);
+
+CREATE TABLE owners (
+  id INT GENERATE ALWAYS AS IDENTITY,
+  full_name CHAR(200),
+  age INT,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE species (
+ id INT GENERATED ALWAYS AS IDENTITY,
+ name CHAR(200),
+ PRIMARY KEY(id)
+);
+
+ALTER TABLE animals
+ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
+
+ALTER TABLE animals
+DROP COLUMN species;
+
+ALTER TABLE animals
+ADD COLUMN species_id INT REFERENCES species(id);
+
+ALTER TABLE animals
+ADD COLUMN owners_id INT REFERENCES owners(id);

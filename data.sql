@@ -19,3 +19,61 @@ INSERT INTO animals (id, name, date_of_birth, weight_kg, neutered, escape_attemp
  INSERT INTO animals (id, name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES (10, 'Blossom', '1998-10-13', 17, TRUE, 3);
 
  INSERT INTO animals (id, name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES (11, 'Ditto', '2022-05-14', 22, TRUE, 4);
+
+INSERT INTO owners (full_name, age)
+VALUES ('Sam Smith', 34);
+
+INSERT INTO owners (full_name, age)
+VALUES ('Jennifer Orwell', 19);
+
+INSERT INTO owners (full_name, age)
+VALUES ('Bob', 45);
+
+INSERT INTO owners (full_name, age)
+VALUES ('Melody Pond', 77);
+
+INSERT INTO owners (full_name, age)
+VALUES ('Dean Winchester', 14);
+
+INSERT INTO owners (full_name, age)
+VALUES ('Jodie Whittaker', 38);
+
+INSERT INTO species (name)
+VALUES ('Pokemon');
+
+INSERT INTO species (name)
+VALUES ('Digimon');
+
+UPDATE animals
+SET species_id = 2
+WHERE name LIKE '%mon';
+
+UPDATE animals
+SET species_id = 1
+WHERE name NOT LIKE '%mon';
+
+ UPDATE animals
+SET owners_id = 1
+WHERE name = 'Agumon';
+
+UPDATE animals
+SET owners_id = 2
+WHERE name = 'Gabumon' OR name = 'Pikachu';
+
+UPDATE animals
+SET owners_id = 3
+WHERE name = 'Plantmon' OR name = 'Devimon';
+
+UPDATE animals
+SET owners_id = 4
+WHERE name = 'Squirtle' OR name = 'Charmander' OR 'Blossom';
+ERROR:  invalid input syntax for type boolean: "Blossom"
+LINE 3: WHERE name = 'Squirtle' OR name = 'Charmander' OR 'Blossom';
+
+UPDATE animals
+SET owners_id = 4
+WHERE name = 'Squirtle' OR name = 'Charmander' OR name = 'Blossom';
+
+UPDATE animals
+SET owners_id = 5
+WHERE name = 'Boarmon' OR name = 'Angemon';
